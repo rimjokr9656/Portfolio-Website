@@ -1,0 +1,194 @@
+/* --- Fan Cards Carousel for Tools & Skills --- */
+.fan-section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 50px;
+    overflow-x: hidden; /* Prevent horizontal scrollbars on mobile layout bounds */
+}
+
+.fan-layout-wrapper {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.fan-card {
+    position: absolute;
+    width: 195px;
+    height: 310px;
+    background-color: rgba(255, 255, 255, 0.05); /* Transparent glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.15); /* Soft transparent border */
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Premium soft drop shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transform-origin: center bottom;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Card inner contents styling */
+.fan-card-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    background-color: #FFFFFF; /* White background for the icon */
+    border-radius: 50%; /* Make the icon background a circle */
+    padding: 14px; /* Give it padding so the logo fits inside nicely */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.fan-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fan-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #FFFFFF; /* Pure white text */
+    margin: 15px 0 5px;
+    font-family: var(--font-heading);
+    transition: var(--transition-smooth);
+}
+
+.fan-card-badge {
+    background-color: rgba(255, 255, 255, 0.08); /* Transparent badge background */
+    border: 1.5px solid rgba(255, 255, 255, 0.25); /* Subtle white border */
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #FFFFFF; /* White text */
+    margin-bottom: 10px;
+    transition: var(--transition-smooth);
+}
+
+/* Hover effects */
+.fan-card:hover {
+    border-color: var(--accent-color); /* Purple brand highlight `#cb6ce6` */
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(203, 110, 230, 0.25);
+}
+
+.fan-card:hover h3 {
+    color: var(--accent-color); /* Purple title on hover */
+}
+
+.fan-card:hover .fan-card-icon {
+    transform: scale(1.08) rotate(4deg); /* Scale and rotate logo badge slightly on hover */
+}
+
+.fan-card:hover .fan-card-badge {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--primary-color); /* Dark text on purple background for readability */
+}
+
+/* Pagination Dots and Arrows */
+.fan-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.fan-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 1.1rem;
+    backdrop-filter: blur(10px);
+    outline: none;
+}
+
+.fan-arrow:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.fan-arrow:active {
+    opacity: 0.7;
+}
+
+.fan-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.fan-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.fan-dot.active {
+    background-color: var(--accent-color);
+    transform: scale(1.3);
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .fan-layout-wrapper {
+        height: 330px;
+    }
+    .fan-card {
+        width: 145px;
+        height: 230px;
+        border-radius: 18px;
+        padding: 12px;
+    }
+    .fan-card-icon {
+        width: 60px;
+        height: 60px;
+        margin-top: 5px;
+    }
+    .fan-card h3 {
+        font-size: 1.05rem;
+        margin: 8px 0 2px;
+    }
+    .fan-card-badge {
+        padding: 4px 10px;
+        font-size: 0.72rem;
+        margin-bottom: 5px;
+    }
+}

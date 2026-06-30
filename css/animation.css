@@ -1,0 +1,223 @@
+/* 
+========================================================================
+   RIMJO K. R - PORTFOLIO STYLESHEET (ANIMATIONS)
+   Transitions, Keyframes, Custom Hover and Scroll Animations
+========================================================================
+*/
+
+/* --- Keyframe Animations --- */
+
+/* Animated gradient background for body */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Slowly rotate circular outlines */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating animation for doodles */
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* Mouse Scroll indicator wheel slide */
+@keyframes scrollMouse {
+    0% {
+        opacity: 1;
+        top: 8px;
+        height: 6px;
+    }
+    50% {
+        opacity: 0.5;
+        top: 18px;
+        height: 10px;
+    }
+    100% {
+        opacity: 0;
+        top: 24px;
+        height: 6px;
+    }
+}
+
+/* Pure CSS Fade-in Upwards (Fallback if GSAP is blocked or fails) */
+.css-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.css-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Interactive Hover Effects --- */
+
+/* Magnetic Navigation Link hover line */
+.nav-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Underline slide animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Image Zoom and Grayscale Blend */
+.portrait-container img {
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#about .portrait-container:hover img {
+    filter: grayscale(0%) contrast(1.05);
+    transform: scale(1.03);
+}
+
+/* Card Lift & Yellow Shadow Drop */
+.card-lift {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1), 
+                box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+                border-color 0.4s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 8px 8px 0px 0px var(--accent-color);
+}
+
+/* Simple Hover Shimmer Effect for buttons */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: none;
+    z-index: 1;
+}
+
+.btn-shimmer:hover::before {
+    left: 150%;
+    transition: left 0.8s ease-in-out;
+}
+
+/* Text reveal mask (useful for GSAP text split animations) */
+.text-reveal-mask {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+.text-reveal-content {
+    display: inline-block;
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.text-reveal-mask.active .text-reveal-content {
+    transform: translateY(0);
+}
+
+/* Magnetic Button helper classes */
+.magnetic-target {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* Doodles Parallax Effect base transition */
+.parallax-item {
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* Animations for floating digital markings in background */
+@keyframes floatMarking {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.02;
+    }
+    50% {
+        transform: translateY(-40px) rotate(180deg);
+        opacity: 0.06;
+    }
+    100% {
+        transform: translateY(0) rotate(360deg);
+        opacity: 0.02;
+    }
+}
+
+@keyframes rotateMarking {
+    0% {
+        transform: rotate(0deg) scale(0.9);
+        opacity: 0.03;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+        opacity: 0.07;
+    }
+    100% {
+        transform: rotate(360deg) scale(0.9);
+        opacity: 0.03;
+    }
+}
+
+@keyframes pulseMarking {
+    0%, 100% {
+        transform: scale(0.9) translateY(0);
+        opacity: 0.02;
+    }
+    50% {
+        transform: scale(1.15) translateY(-20px);
+        opacity: 0.08;
+    }
+}
